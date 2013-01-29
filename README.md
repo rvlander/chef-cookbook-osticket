@@ -1,68 +1,27 @@
 osticket Cookbook
 =================
-TODO: Enter the cookbook description here.
-
-e.g.
-This cookbook makes your favorite breakfast sandwhich.
+Chef cookbook to setup osTicket(http://osticket.com/)
 
 Requirements
 ------------
-TODO: List your cookbook requirements. Be sure to include any requirements this cookbook has on platforms, libraries, other cookbooks, packages, operating systems, etc.
+Tested on centos6.3
 
-e.g.
-#### packages
-- `toaster` - osticket needs toaster to brown your bagel.
+Cookbooks
+---------
+apache2
+mysql
+php
+apache2
+cron
 
 Attributes
 ----------
-TODO: List you cookbook attributes here.
-
-e.g.
-#### osticket::default
-<table>
-  <tr>
-    <th>Key</th>
-    <th>Type</th>
-    <th>Description</th>
-    <th>Default</th>
-  </tr>
-  <tr>
-    <td><tt>['osticket']['bacon']</tt></td>
-    <td>Boolean</td>
-    <td>whether to include bacon</td>
-    <td><tt>true</tt></td>
-  </tr>
-</table>
-
-Usage
------
-#### osticket::default
-TODO: Write usage instructions for each cookbook.
-
-e.g.
-Just include `osticket` in your node's `run_list`:
-
-```json
-{
-  "name":"my_node",
-  "run_list": [
-    "recipe[osticket]"
-  ]
-}
-```
-
-Contributing
-------------
-TODO: (optional) If this is a public cookbook, detail the process for contributing. If this is a private cookbook, remove this section.
-
-e.g.
-1. Fork the repository on Github
-2. Create a named feature branch (like `add_component_x`)
-3. Write you change
-4. Write tests for your change (if applicable)
-5. Run the tests, ensuring they all pass
-6. Submit a Pull Request using Github
+node['osticket']['dir'] - Set the location to place
+node['osticket']['db']['database'] - Set the name of database for osticket
+node['osticket']['db']['user'] = Set the name of MySQL user
+node['osticket']['db']['password'] = Set the password to connect to MySQL
+node['osticket']['server_aliases'] = Array of ServerAliases used in apache vhost.
 
 License and Authors
--------------------
-Authors: TODO: List authors
+------------------
+http://www.apache.org/licenses/LICENSE-2.0-
