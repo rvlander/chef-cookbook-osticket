@@ -13,7 +13,7 @@ include_recipe "php"
 include_recipe "php::module_mysql"
 include_recipe "apache2::mod_php5"
 
-%w{ php-imap php-mbstring php-mcrypt }.each do |pkg|
+%w{ php5-imap php5-mbstring php5-mcrypt }.each do |pkg|
   package pkg do
     action :install
   end
@@ -31,9 +31,9 @@ end
 
 local_file = "#{Chef::Config[:file_cache_path]}/osticket.tar.gz"
 local_tmp_dir = "#{Chef::Config[:file_cache_path]}/osticket"
-unless File.exists?(local_file) 
+unless File.exists?(local_file)
   remote_file local_file do
-    source node['osticket']['tar_url'] 
+    source node['osticket']['tar_url']
     mode "0644"
   end
 end
@@ -47,12 +47,12 @@ directory "#{node['osticket']['dir']}" do
 end
 
 execute "untar" do
-  cwd "#{Chef::Config[:file_cache_path]}/" 
+  cwd "#{Chef::Config[:file_cache_path]}/"
   command "tar --strip-components 1 -xzf #{local_file}"
 end
 
 execute "move files" do
-  cwd "#{Chef::Config[:file_cache_path]}/" 
+  cwd "#{Chef::Config[:file_cache_path]}/"
   command "mv #{Chef::Config[:file_cache_path]}/osticket/upload/* #{node['osticket']['dir']}"
 end
 
@@ -106,8 +106,3 @@ web_app "osticket" do
   server_name server_fqdn
   server_aliases node['osticket']['server_aliases']
 end
-
-
-
-
-
