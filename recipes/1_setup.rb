@@ -48,7 +48,7 @@ end
 
 execute "untar" do
   cwd "#{Chef::Config[:file_cache_path]}/"
-  command "tar --strip-components 1 -xzf #{local_file}"
+  command "tar -xzf #{local_file}"
 end
 
 execute "move files" do
@@ -57,7 +57,7 @@ execute "move files" do
 end
 
 execute "copy config file" do
-  command "mv #{node['osticket']['dir']}/include/ost-config.sample.php #{node['osticket']['dir']}/include/ost-config.php"
+  command "mv #{node['osticket']['dir']}/include/ost-sampleconfig.php #{node['osticket']['dir']}/include/ost-config.php"
 end
 file "#{node['osticket']['dir']}/include/ost-config.php" do
   action :touch
