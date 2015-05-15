@@ -13,7 +13,7 @@ include_recipe "php"
 include_recipe "php::module_mysql"
 include_recipe "apache2::mod_php5"
 
-%w{ php5-imap php5-mcrypt"}.each do |pkg|
+%w{ php5-imap php5-mcrypt }.each do |pkg|
   package pkg do
     action :install
   end
